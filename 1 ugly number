@@ -1,0 +1,35 @@
+class Solution{
+public:	
+	
+	ull getNthUglyNo(int n) {
+	    ull u[n];
+	    
+	    u[0]=1;
+	    ull i2=0;
+	    ull i3=0;
+	    ull i5=0;
+	    ull m2=2; //next multiple of 2
+	    ull m3=3; //next multiple of 3
+	    ull m5=5; // next multiple of 5
+	    
+	    ull uglynum=1;
+	    
+	    for(int i=1;i<n;i++){
+	        uglynum = min(m2,min(m3,m5));
+	        u[i]=uglynum;
+	        if(uglynum==m2){
+	            i2=i2+1;
+	            m2=u[i2]*2;
+	        }
+	        if(uglynum==m3){
+	            i3=i3+1;
+	            m3=u[i3]*3;
+	        }
+	        if(uglynum==m5){
+	            i5=i5+1;
+	            m5=u[i5]*5;
+	        }
+	    }
+	    return uglynum;
+	}
+};
